@@ -24,11 +24,11 @@ class ProductController extends Controller
         ];
 
         $product = Product::create($data);
-        return redirect('/products/' . $product->id . '/show');
+        $test = route('product.show', ['product' => $product->id]);
+        return redirect($test);
     }
 
-    public function show($id) {
-        $product = Product::find($id);
+    public function show(Product $product) {
         return view('products.show', ['singleProduct' => $product]);
     }
 
@@ -38,13 +38,11 @@ class ProductController extends Controller
         return redirect('/products/');
     }
 
-    public function edit($id) {
-        $product = Product::find($id);
+    public function edit(Product $product) {
         return view('products.edit', ['singleProduct' => $product]);
     }
 
-    public function update(Request $request, $id) {
-        $product = Product::find($id);
+    public function update(Request $request, Product $product) {
 
         $data = [
             'name' => $request->name,
