@@ -3,9 +3,9 @@
         <li>
             <h1>{{ $product->name }}</h1>
             <p>{{ $product->description }}</p>
-            <a href="/products/{{ $product->id }}/show">Show</a>
-            <a href="/products/{{ $product->id }}/edit">Edit</a>
-            <form action="/products/{{ $product->id }}" method="post">
+            <a href="{{ route('product.show', [$product]) }}">Show</a>
+            <a href="{{ route('products.edit', [$product]) }}">Edit</a>
+            <form action="{{ route('products.destroy', [$product]) }}" method="post">
                 @csrf
                 @method('DELETE')
 
@@ -15,4 +15,4 @@
     @endforeach
 </ul>
 
-<a href="/products/create">Create new product</a>
+<a href="{{ route('products.create') }}">Create new product</a>

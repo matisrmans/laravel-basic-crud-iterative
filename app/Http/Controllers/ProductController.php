@@ -24,8 +24,7 @@ class ProductController extends Controller
         ];
 
         $product = Product::create($data);
-        $test = route('product.show', ['product' => $product->id]);
-        return redirect($test);
+        return redirect()->route('product.show', ['product' => $product->id]);
     }
 
     public function show(Product $product) {
@@ -35,7 +34,7 @@ class ProductController extends Controller
     public function destroy($id) {
         $product = Product::find($id);
         $product->delete();
-        return redirect('/products/');
+        return redirect()->route('products.index');
     }
 
     public function edit(Product $product) {
@@ -51,6 +50,6 @@ class ProductController extends Controller
         ];
 
         $product->update($data);
-        return redirect('/products/' . $product->id . '/show');
+        return redirect()->route('product.show', ['product' => $product->id]);
     }
 }
