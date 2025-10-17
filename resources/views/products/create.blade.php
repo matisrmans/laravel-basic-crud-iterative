@@ -1,9 +1,21 @@
+@extends('products.layout')
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@section('content')
 <form action="{{ route('products.store') }}" method="post">
     @csrf
-    <input type="text" name="name">
-    <input type="number" name="quantity">
-    <textarea name="description"></textarea>
+    <input type="text" name="name"><br>
+    <input type="number" name="quantity"><br>
+    <textarea name="description"></textarea><br>
     <input type="submit" value="Submit">
 </form>
-
-<a href="{{ route('products.index') }}">Back to product list</a>
+@endsection

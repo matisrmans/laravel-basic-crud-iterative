@@ -3,21 +3,26 @@
 
 @section('content')
 
-    <ul>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
         @foreach ($allProducts as $product)
-            <li>
-                <h1>{{ $product->name }}</h1>
-                <p>{{ $product->description }}</p>
-                <a href="{{ route('product.show', [$product]) }}">Show</a>
-                <a href="{{ route('products.edit', [$product]) }}">Edit</a>
-                <form action="{{ route('products.destroy', [$product]) }}" method="post">
+            <tr>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->description }}</td>
+                <td><a href="{{ route('product.show', [$product]) }}" id= 'show'>Show</a></td>
+                <td><a href="{{ route('products.edit', [$product]) }}">Edit</a></td>
+                <td><form action="{{ route('products.destroy', [$product]) }}" method="post">
                     @csrf
                     @method('DELETE')
 
                     <input type="submit" value="Delete">
-                </form>
-            </li>
+                </form></td>
+            </tr>
         @endforeach
-    </ul>
+        </table>
     
 @endsection

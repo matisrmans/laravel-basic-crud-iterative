@@ -1,5 +1,7 @@
-<h1>{{ $singleProduct->name }}</h1>
-<h4>Quantity: {{ $singleProduct->quantity }}</h4>
-<p>{{ $singleProduct->description }}</p>
+@extends('products.layout')
 
-<a href="{{ route('products.index') }}">Back to all product list</a>
+@section('content')
+    <h1>{{ $singleProduct->name }}</h1>
+    <h4>Quantity: {{ $singleProduct->quantity }}</h4>
+    <p>{{ $singleProduct->description }}</p>
+@endsection
