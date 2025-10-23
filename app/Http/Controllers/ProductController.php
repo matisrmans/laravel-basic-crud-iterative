@@ -39,9 +39,6 @@ class ProductController extends Controller
     }
 
     public function edit(Product $product, Request $request) {
-
-        $oldname = $request->old('name');
-        
         return view('products.edit', ['singleProduct' => $product]);
     }
 
